@@ -91,3 +91,17 @@ async function sign_up_user(event){
   window.location.href = "nextPage.html"; // Redirect after signup (change as necessary)
 }
 */
+
+function pass(inputId, iconId) {
+  let passwordField = document.getElementById(inputId);
+  let eyeIcon = document.getElementById(iconId);
+  
+  if (passwordField.type === "password") {
+      passwordField.type = "text";
+      eyeIcon.src = "eye-open.svg"; // Change to open-eye icon
+  } else {
+      passwordField.type = "password";
+      eyeIcon.src = "eye-close.svg"; // Change to closed-eye icon
+  }
+}
+
