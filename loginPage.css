@@ -11,7 +11,7 @@ body {
 
 .main {
   width: 350px;
-  height: 500px;
+  height: 530px;
   background: red;
   overflow: hidden;
   background: url("https://doc-08-2c-docs.googleusercontent.com/docs/securesc/68c90smiglihng9534mvqmq1946dmis5/fo0picsp1nhiucmc0l25s29respgpr4j/1631524275000/03522360960922298374/03522360960922298374/1Sx0jhdpEpnNIydS4rnN4kHSJtU1EyWka?e=view&authuser=0&nonce=gcrocepgbb17m&user=03522360960922298374&hash=tfhgbs86ka6divo3llbvp93mg4csvb38")
@@ -35,7 +35,7 @@ label {
   font-size: 2.3em;
   justify-content: center;
   display: flex;
-  margin: 60px;
+  margin: 45px;
   font-weight: bold;
   cursor: pointer;
   transition: 0.5s ease-in-out;
@@ -43,7 +43,7 @@ label {
 
 input {
   width: 60%;
-  height: 20px;
+  height: 15px;
   background: #e0dede;
   justify-content: center;
   display: flex;
@@ -72,6 +72,30 @@ button {
   cursor: pointer;
 }
 
+.pass-icon{
+  position: absolute;
+  right: 70px;
+  top : 39%;
+  width: 20px;
+  height: 20px;
+}
+
+.repass-icon{
+  position: absolute;
+  right: 70px;
+  top : 49%;
+  width: 20px;
+  height: 20px;
+}
+
+.loginpass-icon{
+  position: absolute;
+  right: 70px;
+  top : 33%;
+  width: 20px;
+  height: 20px;
+}
+
 button:hover {
   background: #6d44b8;
 }
@@ -82,6 +106,11 @@ button:hover {
   border-radius: 60% / 10%;
   transform: translateY(-180px);
   transition: 0.8s ease-in-out;
+}
+
+#signup-btn{
+  margin: 30px auto;
+  margin-bottom: 20px;
 }
 
 .login label {
