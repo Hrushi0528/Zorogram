@@ -10,27 +10,37 @@
   <body>
     <div class="main">
       <input type="checkbox" id="chk" aria-hidden="true" />
-
       <div class="signup">
-        <form onsubmit="sign_up_user(event)">
+        <form id="signupForm" onsubmit="sign_up_user(event)">
           <!-- Added onsubmit for signup -->
-          <label for="chk" aria-hidden="true">Sign up</label>
+          <label for="chk" id="signup-heading" aria-hidden="true">Sign up</label>
           <input type="text" name="txt" placeholder="User name" required="" />
-          
           <input type="email" name="email" placeholder="Email" required="" />
           <input
-            type="password"
-            name="pswd"
-            placeholder="Password"
-            required=""
-          />
-          <button type="submit">Sign up</button>
+    id="pswd"
+    type="password"
+    name="pswd"
+    placeholder="Password"
+    required=""
+/>
+<img id="pass-icon1" class="pass-icon" onclick="pass('pswd', 'pass-icon1')" src="eye-close.svg">
+
+<input
+    id="re-pswd"
+    type="password"
+    name="re-pswd"
+    placeholder="Renter-Password"
+    required=""
+/>
+<img id="pass-icon2" class="repass-icon" onclick="pass('re-pswd', 'pass-icon2')" src="eye-close.svg">
+
+          <button id="signup-btn" type="submit">Sign up</button>
           <!-- Added type="submit" -->
         </form>
       </div>
 
       <div class="login">
-        <form onsubmit="validateLoginForm(event)">
+        <form id="loginForm" onsubmit="validateLoginForm(event)">
           <!-- Added onsubmit for login -->
           <label for="chk" aria-hidden="true">Login</label>
 
@@ -43,6 +53,7 @@
             placeholder="Password"
             required=""
           />
+          <img id="pass-icon2" class="loginpass-icon" onclick="pass('re-pswd', 'pass-icon2')" src="eye-close.svg">
           <button type="submit">Login</button>
           <!-- Added type="submit" -->
         </form>
