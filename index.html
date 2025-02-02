@@ -14,8 +14,9 @@
         <form id="signupForm" onsubmit="sign_up_user(event)">
           <!-- Added onsubmit for signup -->
           <label for="chk" id="signup-heading" aria-hidden="true">Sign up</label>
-          <input type="text" name="txt" placeholder="User name" required="" />
-          <input type="email" name="email" placeholder="Email" required="" />
+          <div id='uname'><input type="text" name="txt" placeholder="User name" required="" /></div>
+          <div id='mail'><input type="email" name="email" placeholder="Email" required="" /></div>
+          <div id="pass">
           <input
     id="pswd"
     type="password"
@@ -24,7 +25,8 @@
     required=""
 />
 <img id="pass-icon1" class="pass-icon" onclick="pass('pswd', 'pass-icon1')" src="eye-close.svg">
-
+</div>
+<div id="re-pass">
 <input
     id="re-pswd"
     type="password"
@@ -33,6 +35,7 @@
     required=""
 />
 <img id="pass-icon2" class="repass-icon" onclick="pass('re-pswd', 'pass-icon2')" src="eye-close.svg">
+</div>
 
           <button id="signup-btn" type="submit">Sign up</button>
           <!-- Added type="submit" -->
@@ -49,11 +52,12 @@
           <input type="text" name="email" placeholder="Email" required="" />
           <input
             type="password"
+            id="login-pswd"
             name="pswd"
             placeholder="Password"
             required=""
           />
-          <img id="pass-icon2" class="loginpass-icon" onclick="pass('re-pswd', 'pass-icon2')" src="eye-close.svg">
+          <img id="pass-icon3" class="loginpass-icon" onclick="pass('login-pswd', 'pass-icon3')" src="eye-close.svg">
           <button type="submit">Login</button>
           <!-- Added type="submit" -->
         </form>
