@@ -5,6 +5,9 @@ document.addEventListener('DOMContentLoaded', () => {
   const re_pass_field = document.querySelector('.signup input[name="re-pswd"]');
   const pass_field = document.querySelector('.signup input[name="pswd"]');
 
+  const login_pass_field=document.querySelector('.login input[name="pswd"]');
+  const login_user_field=document.querySelector('.login input[name="email"]');
+
 
   // Error message elements (create if they don't exist)
   let errorMessageUsername = document.getElementById("username-error");
@@ -31,6 +34,13 @@ document.addEventListener('DOMContentLoaded', () => {
     }
   }
 
+  let errorloginmessage = document.getElementById("login-error");
+  if (!errorloginmessage) {
+    errorloginmessage = createErrorMessageElement("login-error");
+    if (login_pass_field && login_pass_field.parentNode) { // Check if user_field and parent exist
+      login_pass_field.parentNode.insertBefore(errorloginmessage, login_pass_field.nextSibling);
+    }
+  }
   // Event listeners for input changes (clear errors)
   if (user_field) {
     user_field.addEventListener('input', () => {
@@ -46,17 +56,26 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   }
 
+  if (pass_field) {
+    pass_field.addEventListener('input', () => {
+      if (errorMessagePass) errorMessagePass.innerText = '';
+      pass_field.style.border = "none";
+    });
+  }
+
   if (re_pass_field,pass_field) {
     re_pass_field.addEventListener('input', () => {
       if (errorMessagePass) errorMessagePass.innerText = '';
       re_pass_field.style.border = "none";
       if(pass_field.value !== re_pass_field.value){
         re_pass_field.style.border="2px solid red";
-        errorMessagePass.innerText="Password and Re-Enter password does not Match";
+        errorMessagePass.innerText="Password doesn't Match";
+        document.getElementById('signup-btn').disabled=true;
       }
       else{
         re_pass_field.style.border="none";
         errorMessagePass.innerText = '';
+        document.getElementById('signup-btn').disabled=false;
       }
     });
   }
@@ -65,8 +84,24 @@ document.addEventListener('DOMContentLoaded', () => {
       re_pass_field.style.border="none";
       errorMessagePass.innerText = '';
     }
-  })
+  });
+
+  if (login_user_field) {
+    login_user_field.addEventListener('input', () => {
+      if (errorloginmessage) errorloginmessage.innerText = '';
+      login_user_field.style.border = "none";
+    });
+  }
+  
+  if (login_pass_field) {
+    login_pass_field.addEventListener('input', () => {
+      if (errorloginmessage) errorloginmessage.innerText = '';
+      login_pass_field.style.border = "none";
+    });
+  }
 });
+  
+
 
 
 // Helper function to create error message elements
@@ -74,9 +109,9 @@ function createErrorMessageElement(id) {
   const element = document.createElement("div");
   element.id = id;
   element.style.color = "red";
-  element.style.fontSize = "10px";
+  element.style.fontSize = "16px";
   element.style.fontWeight = "bold";
-  element.style.marginTop = "5px";
+  element.style.marginTop = "1px";
   element.style.textAlign = "center";
   element.style.display = "block";
   return element;
@@ -90,30 +125,47 @@ async function validateLoginForm(event) {
   // Get the email and password from the form inputs
   const username = document.querySelector('.login input[name="email"]').value;
   const password = document.querySelector('.login input[name="pswd"]').value;
+
+  let errorloginmessage = document.getElementById("login-error");
+
+  const main=document.querySelector('.main');
+  const loading=document.querySelector('.loader');
   
+  main.style.display='none';
+  loading.style.display='block';
   //Validating data with server
   try {
-    const response = await fetch('https://nodeserver-rgga.onrender.com/login', {
+    const response = await fetch('http://localhost:5000/login', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ username, password }),
     });
 
     const data = await response.json();
-
+    loading.style.display='none';
     if (response.ok) {
-        alert(data.message); // Login successful with Successful Message
-        window.location.href = "homePage.html"; // Change 'nextPage.html' to your actual page
+        page_response('Login Successful !!',1,"homePage.html");
     } else {
-        alert(data.message); // Show error message
-        location.reload(); //Reload the Login Page
-    }
+      main.style.display='block';
+          if(data.email===''){
+            document.querySelector('.login input[name="email"]').value='';//Setting username to null
+            document.querySelector('.login input[name="email"]').style.border="2px solid red";
+            document.querySelector('.login input[name="pswd"]').value='';
+            errorloginmessage.innerText = data.message;// Show error message
+          }
+          else if(data.pass===''){
+            document.querySelector('.login input[name="pswd"]').value='';
+            document.querySelector('.login input[name="pswd"]').style.border="2px solid red";
+            errorloginmessage.innerText = data.message;// Show error message
+          }
+        }
   } 
 
   //When there is an error in retrieving the data from server
   catch (error) {
+    loading.style.display='none';
     console.error('Error:', error);
-    alert('An error occurred. Please try again later.');
+    page_response("Server Busy !!",0);
 }
 }
 
@@ -140,20 +192,45 @@ async function sign_up_user(event){
   let errorMessageEmail = document.getElementById("email-error");
   let errorMessagePass = document.getElementById("password-error");
 
+  const main=document.querySelector('.main');
+  const loading=document.querySelector('.loader');
+  
+  if (username.length<4){
+    document.querySelector('.signup input[name="txt"]').value='';//Setting username to null
+    let user_field=document.querySelector('.signup input[name="txt"]');
+    user_field.style.border="2px solid red";
+    errorMessageUsername.innerText='Invalid Username';
+    return;
+  }
+  if(password.length<6){
+    document.querySelector('.signup input[name="pswd"]').value='';
+    document.querySelector('.signup input[name="re-pswd"]').value='';//Setting username to null
+    let pass_field=document.querySelector('.signup input[name="pswd"]');
+    pass_field.style.border="2px solid red";
+    errorMessagePass.innerText='Password Too Short';
+    return;
+  }
+  main.style.display='none';
+  loading.style.display='block';
+
   //Validating data with server
   try {
-    const response = await fetch('https://nodeserver-rgga.onrender.com/signup', {
+    const response = await fetch('http://localhost:5000/signup', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ username, email, password,re_password}),
     });
 
     const data = await response.json();
-
+    
     if (response.ok) {
-        alert(data.message); 
-        location.reload();
+      loading.style.display='none';
+        page_response('User Added !!',1,"loginPage.html");
     } else {
+        setTimeout(()=>{
+          loading.style.display='none';
+         main.style.display='block'; 
+        },500);
         if (data.uname==''){
           document.querySelector('.signup input[name="txt"]').value='';//Setting username to null
           let user_field=document.querySelector('.signup input[name="txt"]');
@@ -177,8 +254,9 @@ async function sign_up_user(event){
 
   //When there is an error in retrieving the data from server
   catch (error) {
+    loading.style.display='none';
     console.error('Error:', error);
-    alert('An error occurred. Please try again later.');
+    page_response("Server Busy !!",0);
 }
 }
 
@@ -205,3 +283,27 @@ function pass(inputId, iconId) {
   }
 }
 
+function page_response(msg,option,next_page){
+  document.querySelector('.Page_response').style.display='block';
+  const msg_field=document.querySelector('.response_msg');
+
+  if (option === 1){
+      document.getElementById('response_img1').style.display='block';
+      msg_field.innerHTML=msg;
+    setTimeout(()=>{
+      document.querySelector('.Page_response').style.display='none';
+      document.getElementById('response_img1').style.display='none';
+      window.location.href = next_page;
+    },2000);
+  }
+
+  else if(option === 0){
+      document.getElementById('response_img2').style.display='block';
+      msg_field.innerHTML=msg;
+    setTimeout(()=>{
+      document.querySelector('.Page_response').style.display='none';
+      document.getElementById('response_img2').style.display='none';
+      location.reload();
+    },2000);
+  }
+}
