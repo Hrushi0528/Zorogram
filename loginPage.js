@@ -135,7 +135,7 @@ async function validateLoginForm(event) {
   loading.style.display='block';
   //Validating data with server
   try {
-    const response = await fetch('http://localhost:5000/login', {
+    const response = await fetch('https://nodeserver-rgga.onrender.com/login', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ username, password }),
@@ -215,7 +215,7 @@ async function sign_up_user(event){
 
   //Validating data with server
   try {
-    const response = await fetch('http://localhost:5000/signup', {
+    const response = await fetch('https://nodeserver-rgga.onrender.com/signup', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ username, email, password,re_password}),
