@@ -4,6 +4,8 @@
     <meta charset="UTF-8" />
     <title>Sign up / Login</title>
     <link rel="stylesheet" href="./loginPage.css" />
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Tangerine">
+    <script src="https://kit.fontawesome.com/5b6df90aee.js" crossorigin="anonymous"></script>
     <script src="loginPage.js" defer></script>
     <!-- Added defer to ensure script loads after HTML -->
   </head>
@@ -58,11 +60,134 @@
             required=""
           />
           <img id="pass-icon3" class="loginpass-icon" onclick="pass('login-pswd', 'pass-icon3')" src="eye-close.svg">
-          <button type="submit">Login</button>
+          <button type="submit" name="login">Login</button>
           <!-- Added type="submit" -->
         </form>
       </div>
     </div>
+    <div class="loader">
+      <div class="scene">
+          <div class="forest">
+            <div class="tree tree1">
+              <div class="branch branch-top"></div>
+              <div class="branch branch-middle"></div>
+            </div>
+        
+            <div class="tree tree2">
+              <div class="branch branch-top"></div>
+              <div class="branch branch-middle"></div>
+              <div class="branch branch-bottom"></div>
+            </div>
+        
+            <div class="tree tree3">
+              <div class="branch branch-top"></div>
+              <div class="branch branch-middle"></div>
+              <div class="branch branch-bottom"></div>
+            </div>
+        
+            <div class="tree tree4">
+              <div class="branch branch-top"></div>
+              <div class="branch branch-middle"></div>
+              <div class="branch branch-bottom"></div>
+            </div>
+        
+            <div class="tree tree5">
+              <div class="branch branch-top"></div>
+              <div class="branch branch-middle"></div>
+              <div class="branch branch-bottom"></div>
+            </div>
+        
+            <div class="tree tree6">
+              <div class="branch branch-top"></div>
+              <div class="branch branch-middle"></div>
+              <div class="branch branch-bottom"></div>
+            </div>
+        
+            <div class="tree tree7">
+              <div class="branch branch-top"></div>
+              <div class="branch branch-middle"></div>
+              <div class="branch branch-bottom"></div>
+            </div>
+          </div>
+          
+          <div class="tent">
+              <div class="roof"></div>
+              <div class="roof-border-left">
+                <div class="roof-border roof-border1"></div>
+                <div class="roof-border roof-border2"></div>
+                <div class="roof-border roof-border3"></div>
+              </div>
+              <div class="entrance">
+                <div class="door left-door">
+                  <div class="left-door-inner"></div>
+                </div>
+                <div class="door right-door">
+                  <div class="right-door-inner"></div>
+                </div>
+              </div>
+            </div>
+        
+          <div class="floor">
+              <div class="ground ground1"></div>
+              <div class="ground ground2"></div>
+            </div>
+          
+          <div class="fireplace">
+            <div class="support"></div>
+            <div class="support"></div>
+            <div class="bar"></div>
+            <div class="hanger"></div>
+            <div class="smoke"></div>
+            <div class="pan"></div>
+            <div class="fire">
+              <div class="line line1">
+                <div class="particle particle1"></div>
+                <div class="particle particle2"></div>
+                <div class="particle particle3"></div>
+                <div class="particle particle4"></div>
+              </div>
+              <div class="line line2">
+                <div class="particle particle1"></div>
+                <div class="particle particle2"></div>
+                <div class="particle particle3"></div>
+                <div class="particle particle4"></div>
+              </div>
+              <div class="line line3">
+                <div class="particle particle1"></div>
+                <div class="particle particle2"></div>
+                <div class="particle particle3"></div>
+                <div class="particle particle4"></div>
+              </div>
+            </div>
+          </div>
+          
+          <div class="time-wrapper">
+            <div class="time">
+              <div class="day"></div>
+              <div class="night">
+                <div class="moon"></div>
+                <div class="star star1 star-big"></div>
+                <div class="star star2 star-big"></div>
+                <div class="star star3 star-big"></div>
+                <div class="star star4"></div>
+                <div class="star star5"></div>
+                <div class="star star6"></div>
+                <div class="star star7"></div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="loading">
+          Loading<span class="dot">.</span><span class="dot">.</span><span class="dot">.</span>
+        </div>        
+      </div>
+    <div class="Page_response">
+      <i class="fa-regular fa-face-smile-beam fa-bounce fa-10x" id="response_img1" style="color: #1046a2;"></i>
+      <i class="fa-regular fa-face-frown fa-beat fa-10x" id="response_img2" style="color: #ba0d0d;"></i>
+      <!--<i class="fa-regular fa-face-angry fa-shake fa-10x" id="response_img3" style="color: #0e958c;"></i>-->
+      <div class="response_msg">
+        
+      </div>
+    </div>
   </body>
 </html>
-
