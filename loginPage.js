@@ -225,7 +225,7 @@ async function sign_up_user(event){
     
     if (response.ok) {
       loading.style.display='none';
-        page_response('User Added !!',1,"loginPage.html");
+        page_response('User Added !!',1,"index.html");
     } else {
         setTimeout(()=>{
           loading.style.display='none';
