@@ -1,0 +1,538 @@
+/* General Background */
+body {
+    background-color: #000;
+}
+
+/* Navbar */
+.navbar-brand {
+    font-weight: 500;
+    color: #009970;
+    font-size: 24px;
+    transition: color 0.3s;
+}
+
+.login-button,.username {
+    border-radius: 50px;
+    background-color: #009970;
+    padding: 8px 20px;
+    text-decoration: none;
+    color: #fff;
+    font-size: 14px;
+    transition: background-color 0.3s;
+}
+
+
+.login-button:hover {
+    background-color: #00b383;
+}
+
+.navbar-toggler,.username {
+    border: none;
+    font-size: 1.25rem;
+}
+
+/* Navbar Link Hover Effect */
+.nav-link {
+    color: #666777;
+    font-weight: 500;
+    position: relative;
+}
+
+.nav-link:hover, .nav-link.active {
+    color: #fff;
+}
+
+.nav-link::before {
+    content: "";
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 0;
+    height: 2px;
+    background-color: #009970;
+    visibility: hidden;
+    transition: 0.3s ease-in-out;
+}
+
+.nav-link:hover::before, .nav-link.active::before {
+    width: 100%;
+    visibility: visible;
+}
+
+/* Quote Section */
+.quote-container {
+    display: flex;
+    justify-content: center;
+    margin-top: 100px;
+}
+
+.quote-section {
+    display: flex;
+    justify-content: center;
+    border-radius: 30px;
+    padding: 10px 20px;
+}
+
+#quote {
+    font-size: 30px;
+    font-weight: 500;
+    color: #009970;
+}
+
+/* Trip Start Section */
+.trip-start-div {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: 10px;
+    height: 200px;
+    width: 100%;
+    margin: auto;
+    /* border: 2px solid red; */
+}
+
+.trip-start {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 50px;
+}
+
+.trip-start-btn {
+    background-color: #009970;
+    border-radius: 50px;
+    color: #fff;
+    padding: 10px 20px;
+    font-weight: bold;
+    text-decoration: none;
+    transition: background 0.3s;
+}
+
+.trip-start-btn:hover {
+    background-color: #00b383;
+}
+
+/* Adjust Icon Spacing */
+.icon-div1, .icon-div2 {
+    display: flex;
+    justify-content: space-around;
+    gap: 20px; /* Even spacing */
+}
+.icon{
+    margin: 10px 30px;
+}
+/* indian-mon img   */
+.main-content {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    height: auto;
+    overflow: hidden;
+}
+
+.main-content img {
+    width: 100%;
+    max-height: 500px;
+    object-fit: contain;
+}
+/* Search Module */
+.m-trip-start-div{
+    display: none;
+}
+
+/* Input Fields */
+input {
+    width: 100%;
+    padding: 8px;
+    margin: 5px 0;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+}
+
+#submitTrip {
+    width: 100%;
+    padding: 10px;
+    background-color: #28a745;
+    color: white;
+    border: none;
+    cursor: pointer;
+    border-radius: 5px;
+    margin-top: 10px;
+}
+
+#submitTrip:hover {
+    background-color: #218838;
+}
+
+/* Modal Styles */
+.modal {
+    display: none; /* Initially hidden */
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+    justify-content: center;
+    align-items: center;
+}
+
+.modal-content {
+    background: white;
+    padding: 20px;
+    width: 300px;
+    border-radius: 10px;
+    text-align: left;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    transform: scale(0.8);
+    opacity: 0;
+    transition: all 0.3s ease-in-out;
+}
+
+/* Show Modal Effect */
+.modal.show {
+    display: flex;
+}
+
+.modal.show .modal-content {
+    transform: scale(1);
+    opacity: 1;
+}
+
+/* Close Button */
+.close {
+    float: right;
+    font-size: 22px;
+    cursor: pointer;
+}
+
+.close:hover {
+    color: red;
+}
+
+/* trip filter */
+.search-div{
+    display: flex;
+    height: 150px;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+.trip-filter ul, .filter{
+    display: flex;
+    justify-content: center;
+    list-style: none;
+}
+.trip-filter ul li a{
+    margin: 0px 20px;
+    text-decoration: none;
+    color: #009970;
+}
+/* search box */
+.filter{
+    margin-top: 20px;
+}
+#destination , #username, #days{
+    position: relative;
+    display: inline-block;
+}
+
+#search-destination, #search-username, #search-noofdays {
+    width: 300px; /* Adjust width as needed */
+    padding: 8px 35px 8px 10px; /* Add right padding for icon */
+    border: 1px solid #ccc;
+    border-radius: 15px;
+    outline: none;
+}
+
+#destination button, #username button ,#days button{
+    position: absolute;
+    right: 5px;
+    top: 50%;
+    transform: translateY(-50%);
+    background: none;
+    border: none;
+    cursor: pointer;
+}
+/* dropdown css */
+/* General styling for the container */
+#type, #budget {
+    display: flex;
+    align-items: center;
+    border: 1px solid #ccc;  /* Matches search box */
+    border-radius: 15px;
+    overflow: hidden;
+    width: fit-content;  /* Adjusts to content width */
+    background: #fff;
+}
+
+/* Styling for the dropdown */
+#trip-type, #budget-range {
+    appearance: none; /* Removes default styles */
+    border: none;
+    padding: 8px 35px 8px 10px; /* Similar padding to input */
+    outline: none;
+    background: none;
+    font-size: 16px;
+    cursor: pointer;
+}
+
+/* Adding a dropdown arrow (optional) */
+#type::after , #budget::after{
+    content: "▼";  /* Unicode down arrow */
+    font-size: 14px;
+    padding-right: 10px;
+    color: #666;
+    pointer-events: none; /* Prevents interaction */
+}
+
+/* about section */
+.about {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-wrap: wrap;
+    background-color: #000; /* Light background */
+    padding: 20px;
+    border-radius: 10px;
+    text-align: center;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    max-width: 1200px;
+    margin: 20px auto;
+    /* border: 2px solid red; */
+}
+
+.about-img picture img {
+    /* border: 2px solid red; */
+    display: block;
+    width: 250px;
+    height: 250px;
+    border-radius: 50%;
+    object-fit: cover;
+    flex: 1;
+}
+
+.about-des {
+    flex: 2;
+    padding: 0 20px;
+    font-size: 16px;
+    color: #fff;
+    text-align: center;
+    min-width: 250px;
+    /* border: 2px solid red; */
+}
+
+.about-des h2 {
+    color: #009970;
+    text-align: center;
+    margin: 10px;
+}
+
+.about-des ul {
+    list-style: none;
+    padding: 0;
+}
+
+.about-des ul li {
+    margin-bottom: 8px;
+}
+
+.about-social {
+    display: flex;
+    justify-content: center;
+    flex: 1;
+    gap: 15px;
+    /* border: 2px solid red; */
+}
+
+.about-social a {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    background-color: #009970;
+    color: #fff;
+    text-decoration: none;
+    font-size: 20px;
+    transition: 0.3s;
+}
+
+.about-social a:hover {
+    background-color: #0056b3;
+}
+/* NEW START module */
+.start-btn {
+    background-color: green;
+    color: white;
+    padding: 13px 15px; /* Increased padding */
+    font-size: 22px; /* Slightly larger font */
+    border: none;
+    cursor: pointer;
+    position: absolute;
+    top: 235px; /* Keeps it further down */
+    left: 50%;
+    transform: translateX(-50%);
+    border-radius: 15px;
+    width: 180px; /* Increased width */
+    transition: all 0.3s ease-in-out; /* Smooth transition */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Subtle shadow */
+}
+
+.start-btn:hover {
+    background-color: #43ed0a; /* Lighter green */
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.3); /* More depth on hover */
+    transform: translateX(-50%) scale(1.05); /* Slightly bigger on hover */
+}
+
+.container {
+    background: white;
+    padding: 10px;
+    border-radius: 15px;
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.3);
+    width: 350px;
+    margin: 300px auto; /* Increased margin to push it further down */
+    position: relative;
+    margin-top: 350px; /* Moves down */
+}
+.hidden {
+    display: none;
+}
+
+.close-btn {
+    position: absolute;
+    top: 10px;
+    right: 15px;
+    font-size: 20px;
+    cursor: pointer;
+    color: #333;
+}
+
+.close-btn:hover {
+    color: red;
+}
+
+input {
+    width: 90%;
+    padding: 10px;
+    margin: 10px 0;
+    border: 2px solid #ccc;
+    border-radius: 8px;
+    font-size: 16px;
+}
+
+input:focus {
+    border-color: #6a11cb;
+}
+
+.small-btn {
+    padding: 10px 15px;
+    font-size: 12px;
+    cursor: pointer;
+    background: #4CAF50;
+    color: white;
+    border: none;
+    border-radius: 10px;
+    margin-top: 10px;
+    margin-left: 90px; /* Move right */
+    margin-right: 85px;
+}
+
+.small-btn:hover {
+    background: #45a049;
+}
+
+.trip-container {
+    background: white;
+    padding: 15px;
+    border-radius: 10px;
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.3);
+    width: 320px;
+    margin: 20px auto;
+    position: relative;
+}
+
+.reset-btn {
+    background-color: red;
+    color: white;
+    padding: 5px 10px;
+    border: none;
+    font-size: 12px;
+    cursor: pointer;
+    border-radius: 4px;
+    position: absolute;
+    top: 10px;
+    right: 10px;
+}
+
+.days-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    margin-top: 15px;
+    gap: 10px;
+    padding-top: 30px;
+}
+
+.day-box {
+    width: 60px;
+    height: 60px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #2196F3;
+    color: white;
+    font-size: 14px;
+    font-weight: bold;
+    border-radius: 8px;
+    box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.2);
+    cursor: pointer;
+    transition: transform 0.2s ease-in-out;
+}
+
+.day-box:hover {
+    background: #1976D2;
+    transform: scale(1.1);
+}
+
+
+
+/* Mobile View */
+@media (max-width: 991px) {
+    #quote{
+        font-size: 20px;
+    }
+    .trip-start-div, .icon-div1, .icon-div2, .trip-start {
+        display: none;
+    }
+
+    .m-trip-start-div {
+        display: flex;
+        justify-content: space-between;
+        margin: 20px;
+        width: 100%;
+        max-width: 400px;
+    }
+
+    .m-icon-div1, .m-icon-div2 {
+        display: flex;
+        justify-content: center;
+        gap: 10px;
+    }
+    /* about section in mobile view */
+    .about {
+        flex-direction: column;
+        text-align: center;
+    }
+
+    .about-img {
+        margin-bottom: 20px;
+    }
+
+    .about-social {
+        justify-content: center;
+    }
+}
