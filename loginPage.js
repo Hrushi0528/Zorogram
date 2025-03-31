@@ -135,8 +135,9 @@ async function validateLoginForm(event) {
   loading.style.display='block';
   //Validating data with server
   try {
-    const response = await fetch('https://nodeserver-rgga.onrender.com/login', {
+    const response = await fetch('https://localhost:3000/login', {
         method: 'POST',
+        credentials: 'include',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ username, password }),
     });
@@ -144,7 +145,9 @@ async function validateLoginForm(event) {
     const data = await response.json();
     loading.style.display='none';
     if (response.ok) {
-        page_response('Login Successful !!',1,"homePage.html");
+        console.log("Login Response:", data);
+        page_response('Login Successful !!',1,"index.html");
+
     } else {
       main.style.display='block';
           if(data.email===''){
@@ -215,7 +218,7 @@ async function sign_up_user(event){
 
   //Validating data with server
   try {
-    const response = await fetch('https://nodeserver-rgga.onrender.com/signup', {
+    const response = await fetch('http://localhost:5000/signup', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ username, email, password,re_password}),
@@ -225,7 +228,7 @@ async function sign_up_user(event){
     
     if (response.ok) {
       loading.style.display='none';
-        page_response('User Added !!',1,"index.html");
+        page_response('User Added !!',1,"loginPage.html");
     } else {
         setTimeout(()=>{
           loading.style.display='none';
