@@ -52,6 +52,25 @@
             }
         }
 
+        function logout(){
+                try {
+                  const response = await fetch('https://nodeserver-rgga.onrender.com/logout',{
+                  method: 'POST',
+            });
+                  const data = await response.json();
+                  if (response.ok) {
+                      console.log("Login Response:", data);
+                  }
+                  else{
+                    console.log("Error Occurred:");
+                  }
+
+                  catch (error) {
+                console.error('Session error:', error);
+                //window.location.href = "loginPage.html";
+            }
+        }
+                
         window.onload = checkSession;
     </script>
 </head>
@@ -84,7 +103,7 @@
         </div>
       </div>
       <a href="loginPage.html" class="login-button">Login
-          <img src="logout.jpg" alt="Logout" class="logout-image">
+          <button onclick="logout()"><img src="logout.jpg" alt="Logout" class="logout-image"></button>
       </a>
       <button class="navbar-toggler" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasNavbar" aria-controls="offcanvasNavbar" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
