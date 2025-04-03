@@ -41,6 +41,7 @@
                     let username=document.createElement("input");
                     username.type="text";
                     username.value="Hi "+data.user.username;
+                    document.querySelector('.logout-image').style.display="block";
                     username.readOnly=true;
                     username.className="username";
                     link.parentNode.replaceChild(username,link);
@@ -83,6 +84,7 @@
         </div>
       </div>
       <a href="loginPage.html" class="login-button">Login
+          <img src="logout.jpg" alt="Logout" class="logout-image">
       </a>
       <button class="navbar-toggler" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasNavbar" aria-controls="offcanvasNavbar" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
