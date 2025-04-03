@@ -23,7 +23,8 @@
         });*/
 
         async function checkSession() {
-            try {
+            
+          try {
                 const response = await fetch('https://nodeserver-rgga.onrender.com/session',{
                 method: 'GET',
                 credentials: 'include' // Ensures cookies are sent
@@ -35,6 +36,7 @@
 
                 const data = await response.json();
                 console.log("Session Data:", data);  // ✅ Debugging
+                
                 if (data.user) {
                     // Display username
                     let link=document.querySelector('.login-button');
@@ -42,6 +44,7 @@
                     username.type="text";
                     username.value="Hi "+data.user.username;
                     document.querySelector('.logout-image').style.display="block";
+                    document.querySelector('.logout').style.display="block";
                     username.readOnly=true;
                     username.className="username";
                     link.parentNode.replaceChild(username,link);
@@ -50,16 +53,21 @@
                 console.error('Session error:', error);
                 //window.location.href = "loginPage.html";
             }
-        }
+          }
+            
+    
 
-        function logout(){
-                try {
+        window.onload = checkSession;
+
+        async function logout(){
+          try {
                   const response = await fetch('https://nodeserver-rgga.onrender.com/logout',{
                   method: 'POST',
             });
                   const data = await response.json();
                   if (response.ok) {
-                      console.log("Login Response:", data);
+                      console.log("logout Successfully", data);
+                      window.location.href="index.html";
                   }
                   else{
                     console.log("Error Occurred:");
@@ -70,8 +78,6 @@
                 //window.location.href = "loginPage.html";
             }
         }
-                
-        window.onload = checkSession;
     </script>
 </head>
 <body>
@@ -103,12 +109,19 @@
         </div>
       </div>
       <a href="loginPage.html" class="login-button">Login
-          <button onclick="logout()"><img src="logout.jpg" alt="Logout" class="logout-image"></button>
       </a>
       <button class="navbar-toggler" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasNavbar" aria-controls="offcanvasNavbar" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
       </button>
+      
     </div>
+    <div class="user-container">
+      <button onclick=logout() class="logout" style="display:none"><img src="logout.jpg" alt="Logout" class="logout-image"></button>
+      
+    </div>
+    <button class="navbar-toggler" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasNavbar" aria-controls="offcanvasNavbar" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
   </nav>
   <!-- end of navBar -->
 
