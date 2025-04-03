@@ -2,7 +2,29 @@
 body {
     background-color: #000;
 }
+.user-container {
+    position: relative;
+    display: flex;
+    justify-content: flex-end; /* Align to the right */
+    margin-right: 20px; /* Adjust spacing from the right */
+  }
+   /* lokesh varma */
+   .logout-image {
+    width: 55px; /* Adjust the width of the image */
+    height: 55px; /* Adjust the height of the image */
+    cursor: pointer; /* Make it clickable */
+    transition: transform 0.3s ease; /* Add a smooth hover effect */
+    display: none;
+  }
+  
+  .logout-image:hover {
+    transform: scale(1.1); /* Slightly enlarge the image on hover */
+  }
 
+  .logout{
+    border-radius:100%;
+    border:none;
+  }
 /* Navbar */
 .navbar-brand {
     font-weight: 500;
@@ -20,23 +42,10 @@ body {
     font-size: 14px;
     transition: background-color 0.3s;
 }
-
-.logout-image {
-    width: 65px; /* Adjust the width of the image */
-    height: 65px; /* Adjust the height of the image */
-    cursor: pointer; /* Make it clickable */
-    transition: transform 0.3s ease; /* Add a smooth hover effect */
-    display: none;
-  }
-
-.logout-image:hover {
-    transform: scale(1.1); /* Slightly enlarge the image on hover */
-  }
-
+ 
 .username{
     width:10%;
 }
-
 .login-button:hover {
     background-color: #00b383;
 }
@@ -379,7 +388,7 @@ input {
 .about-social a:hover {
     background-color: #0056b3;
 }
-/* NEW START module */
+/*  LOkesh NEW START module */
 .start-btn {
     background-color: green;
     color: white;
@@ -460,12 +469,53 @@ input:focus {
     background: #45a049;
 }
 
+/* Fixed size for the trip container */
+.trip-container {
+    width: 400px; /* Fixed width */
+    height: 300px; /* Fixed height */
+    overflow-y: auto; /* Add scroll if content overflows */
+    border: 2px solid #009970; /* Optional border for visibility */
+    border-radius: 10px; /* Rounded corners */
+    padding: 20px;
+    background-color: #fff; /* Background color */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Subtle shadow */
+}
+
+/* Style for the day buttons as circles */
+.days-container {
+    display: flex;
+    flex-wrap: wrap; /* Allow wrapping of day buttons */
+    gap: 10px; /* Space between circles */
+    justify-content: center; /* Center align the circles */
+}
+
+.days-container button {
+    width: 50px; /* Circle width */
+    height: 50px; /* Circle height */
+    border-radius: 50%; /* Make it circular */
+    background-color: #009970; /* Circle background color */
+    color: #fff; /* Text color */
+    font-size: 14px; /* Font size for text inside the circle */
+    border: none; /* Remove border */
+    cursor: pointer; /* Pointer cursor on hover */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: transform 0.3s ease, background-color 0.3s ease;
+}
+
+.days-container button:hover {
+    background-color: #00b383; /* Change color on hover */
+    transform: scale(1.1); /* Slightly enlarge on hover */
+}
+
 .trip-container {
     background: white;
     padding: 15px;
     border-radius: 10px;
     box-shadow: 0 8px 16px rgba(0, 0, 0, 0.3);
-    width: 320px;
+    width: 400px;
+    height: 200px;
     margin: 20px auto;
     position: relative;
 }
@@ -489,7 +539,7 @@ input:focus {
     justify-content: center;
     margin-top: 15px;
     gap: 10px;
-    padding-top: 30px;
+    padding-top: 20px;
 }
 
 .day-box {
@@ -551,3 +601,4 @@ input:focus {
         justify-content: center;
     }
 }
+
