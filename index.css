@@ -21,6 +21,21 @@ body {
     transition: background-color 0.3s;
 }
 
+.logout-image {
+    width: 65px; /* Adjust the width of the image */
+    height: 65px; /* Adjust the height of the image */
+    cursor: pointer; /* Make it clickable */
+    transition: transform 0.3s ease; /* Add a smooth hover effect */
+    display: none;
+  }
+
+.logout-image:hover {
+    transform: scale(1.1); /* Slightly enlarge the image on hover */
+  }
+
+.username{
+    width:10%;
+}
 
 .login-button:hover {
     background-color: #00b383;
